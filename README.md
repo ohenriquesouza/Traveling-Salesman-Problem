@@ -103,10 +103,10 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 <p align="justify">⠀⠀⠀⠀tobas</p>
 
 # REFERÊNCIAS
-[ I ] https://pt.wikipedia.org/wiki/Teoria_dos_grafos
-[ II ] http://www.mat.ufrgs.br/~portosil/caixeiro.html
-[ III ] https://matplotlib.org/
-[ IV ] https://numpy.org/
-[ V ] https://scipy.org/
-[ VI ] https://networkx.org/
-[ VII ] https://www.carrosnaweb.com.br/fichadetalhe.asp?codigo=2274
+[ I ] https://pt.wikipedia.org/wiki/Teoria_dos_grafos <br/>
+[ II ] http://www.mat.ufrgs.br/~portosil/caixeiro.html <br/>
+[ III ] https://matplotlib.org/ <br/>
+[ IV ] https://numpy.org/ <br/>
+[ V ] https://scipy.org/ <br/>
+[ VI ] https://networkx.org/ <br/>
+[ VII ] https://www.carrosnaweb.com.br/fichadetalhe.asp?codigo=2274 <br/>
