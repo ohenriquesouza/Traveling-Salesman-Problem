@@ -17,7 +17,7 @@ processFile(file, graph)
 #  [1.6, 0, 0, 0, 0, 0, 1.1, 0, 0, 0],
 #  [1.1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 #  [1.1, 0, 0, 0, 0, 0, 0, 0.9, 0, 0]]
-results_dict = graph.gulosoMaxValue(50)
+results_dict = graph.gulosoMaxValue(80)
 print("O melhor caminho encontrado foi: ")
 graph.printVisitedNodes(results_dict["Nodes"])
 print("Com um ganho de: ", results_dict["Gain"])

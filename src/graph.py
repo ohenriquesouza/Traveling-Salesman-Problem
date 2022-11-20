@@ -108,11 +108,13 @@ class Graph():
         if(canContinue):
             self.visitedNodes.append(best_node)
             node = best_node
-            self.addEdge_NodeEdgeList(node)
+            if (edge_passed.begin == self.nodes[0]):
+                self.addEdge_NodeEdgeList(node)
             self.workload = self.workload - (best_node.time_spent + edge_passed.distance)
             self.gain = self.gain + (best_node.bounty - edge_passed.gas_cost)
         
         else:
+            print(node.id)
             self.visitedNodes.append(self.nodes[0])
             self.workload = self.workload - self.timeToReturn(node)
     
@@ -129,7 +131,8 @@ class Graph():
             self.visitedNodes.append(no)
             while (no != self.find_BestStep(no)):                
                 no = self.visitedNodes[-1]
-
+            self.printVisitedNodes(self.visitedNodes)
+            self.printVisitedEdges()
             if (self.gain > results_dict["Gain"]):
                 results_dict["Nodes"] = self.visitedNodes
                 results_dict["Gain"] = self.gain
