@@ -1,0 +1,40 @@
+Vertices : 10
+Carga horária : 80
+
+Vertices:
+[0] bounty 0 time_spent 0
+[1] bounty 450 time_spent 9
+[2] bounty 1350 time_spent 27
+[3] bounty 1950 time_spent 39
+[4] bounty 1200 time_spent 24
+[5] bounty 450 time_spent 9
+[6] bounty 600 time_spent 12
+[7] bounty 750 time_spent 15
+[8] bounty 600 time_spent 12
+[9] bounty 450 time_spent 9
+
+Arcos:
+(0,1) distance 0.7 gas_cost 3.2
+(0,2) distance 2.4 gas_cost 12.5
+(0,3) distance 2 gas_cost 8.8
+(0,4) distance 3.2 gas_cost 17.6
+(0,5) distance 1 gas_cost 4.1
+(0,7) distance 1.2 gas_cost 5.8
+(0,8) distance 1.6 gas_cost 7
+(1,0) distance 0.7 gas_cost 3.2
+(2,0) distance 2.4 gas_cost 12.5
+(3,0) distance 2 gas_cost 8.8
+(4,0) distance 3.2 gas_cost 17.6
+(5,0) distance 1 gas_cost 4.1
+(6,0) distance 1.1 gas_cost 5.2
+(7,0) distance 1.2 gas_cost 5.8
+(8,0) distance 1.6 gas_cost 7
+(9,0) distance 1.1 gas_cost 6
+(2,3) distance 1 gas_cost 3.6
+(3,4) distance 1.5 gas_cost 7.4
+(1,9) distance 0.6 gas_cost 2
+(8,9) distance 0.9 gas_cost 4
+(9,8) distance 0.9 gas_cost 4
+(8,7) distance 1.1 gas_cost 4.6
+(5,6) distance 0.7 gas_cost 3.3
+(6,7) distance 1.4 gas_cost 6.3
