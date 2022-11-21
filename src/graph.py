@@ -114,27 +114,30 @@ class Graph():
             self.gain = self.gain + (best_node.bounty - edge_passed.gas_cost)
         
         else:
-            print(node.id)
             self.visitedNodes.append(self.nodes[0])
             self.workload = self.workload - self.timeToReturn(node)
-    
+            self.gain = self.gain - self.costToReturn(node)
+
+        
         return node
 
     def gulosoMaxValue(self, workload):
-        #loop até não ter mais arestas saindo do 0
         results_dict = {}
-        results_dict["Nodes"] = self.visitedNodes
+        results_dict["Nodes"] = ""
         results_dict["Gain"] = self.gain
+        
         for i in range (len(self.nodes[0].edges)):
             self.cleanConstants(workload)
             no = self.nodes[0]
             self.visitedNodes.append(no)
-            while (no != self.find_BestStep(no)):                
-                no = self.visitedNodes[-1]
-            self.printVisitedNodes(self.visitedNodes)
-            self.printVisitedEdges()
+            if (self.can_ChooseEdge(no)):
+                while (no != self.find_BestStep(no)):
+                    no = self.visitedNodes[-1]
+            else:
+                break   
+
             if (self.gain > results_dict["Gain"]):
-                results_dict["Nodes"] = self.visitedNodes
+                results_dict["Nodes"] = self.printVisitedNodes()
                 results_dict["Gain"] = self.gain
 
         return results_dict
@@ -144,11 +147,18 @@ class Graph():
             if (i.end == self.nodes[0]):
                 return i.distance
 
-    def printVisitedNodes(self, visitedNodes):
-        for i in visitedNodes:
-            print(i.id, "-> ", end="")
+    def costToReturn(self, node):
+        for i in node.edges:
+            if (i.end == self.nodes[0]):
+                return i.gas_cost
 
-        print("home")
+    def printVisitedNodes(self):
+        str = ""
+        for i in self.visitedNodes:
+            str = str + i.id + " -> "
+
+        str = str + "home"
+        return str
 
     def printVisitedEdges(self):
         for i in self.visitedEdges:
@@ -163,3 +173,10 @@ class Graph():
         self.workload = workload
         self.visitedNodes.clear()
         self.gain = 0
+
+    def can_ChooseEdge(self, node):
+        for i in node.edges:
+            if (i.end.time_spent < (self.workload - self.timeToReturn(i.end) - i.distance) and (not self.verifyEdge(i))):
+                return True
+
+        return False

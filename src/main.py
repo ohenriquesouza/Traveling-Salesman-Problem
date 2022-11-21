@@ -1,3 +1,4 @@
+import linecache
 from process_file import processFile
 from process_file import buildNode
 from graph import Graph
@@ -17,9 +18,10 @@ processFile(file, graph)
 #  [1.6, 0, 0, 0, 0, 0, 1.1, 0, 0, 0],
 #  [1.1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 #  [1.1, 0, 0, 0, 0, 0, 0, 0.9, 0, 0]]
-results_dict = graph.gulosoMaxValue(80)
+carga_horaria = float(input("Insira a carga horária desejada: "))
+results_dict = graph.gulosoMaxValue(carga_horaria)
 print("O melhor caminho encontrado foi: ")
-graph.printVisitedNodes(results_dict["Nodes"])
-print("Com um ganho de: ", results_dict["Gain"])
+print(results_dict["Nodes"])
+print("Com um ganho de: R$", results_dict["Gain"])
 # graph.printGraph()
 file.close()

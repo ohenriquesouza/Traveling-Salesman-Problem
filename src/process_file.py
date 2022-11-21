@@ -6,7 +6,6 @@ def processFile(file, graph):
     for line in file:
         processLine(line, graph)
 
-
 def processLine(line: str, graph):
     split = line.split(' ')
     getNumberOfNodes(split, graph)
