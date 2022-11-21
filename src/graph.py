@@ -32,7 +32,8 @@ class Graph():
         if (not replica):
             self.nodes.append(node)
                 
-    def printGraph(self):
+    def printGraph(self, nodes):
+        color_map = []
         pos = {
             '0':([0.0, 0.0]),
             '1':([-0.2, 4.0]),
@@ -45,11 +46,16 @@ class Graph():
             '8':([-4.5, 2.5]),
             '9':([-2.0, 6.0])            
         }
-
+        
+        for i in self.nodes:
+            if (self.existNode(i, nodes)):
+                color_map.append('green')
+            else:
+                color_map.append('blue')
+        
         nx.draw_networkx_edges(self.G, pos, edge_color= '#000000')
-        nx.draw_networkx_nodes(self.G, pos)
+        nx.draw_networkx_nodes(self.G, pos, node_color=color_map)
         nx.draw_networkx_labels(self.G, pos)
-
         plt.show()
 
     def setNmNodes(self, nmNodes : int):
@@ -58,34 +64,25 @@ class Graph():
     def adjMatrix(self):
         return nx.to_numpy_matrix(self.G)
 
-    # def hamiltonianCycle(self, adjMatrix, s):
-
-    #     vertex = []
-    #     for i in range(len(self.nodes)):
-    #         vertex.append(i)
-
-    #     min_path = 1000
-    #     next_permutation = permutations(vertex)
-        
-    #     for i in next_permutation:
-
-    #         current_weight = 0
-
-    #         k = s
-
-    #         for j in i:
-    #             current_weight += adjMatrix[k][j]
-    #             k = j
-    #         current_weight += adjMatrix[k][s]
-
-    #         min_path = min(min_path, current_weight)
-    #     return vertex
-            
-
     def verifyNode(self, node_id):
         for i in self.nodes:
             if (i.id == node_id):
                 return i
+
+    def existNode(self, node, visitedNodes):
+        for i in visitedNodes:
+            if (i == node):
+                return True
+
+        return False
+
+    def return_VisitedNodeList(self, str):
+        split = str.split(' ')
+        list = []
+        for i in split:
+            if (i.isalnum() and i != "home"):
+                list.append(self.verifyNode(i))
+        return list
 
     def verifyEdge(self, edge):
         for i in self.visitedEdges:
