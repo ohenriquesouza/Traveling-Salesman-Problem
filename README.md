@@ -125,8 +125,8 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 <p>⠀⠀⠀⠀Neste ponto, o grafo já conta com o vértices e arestas capacitados para receberem todas informações necessárias para o funcionamento do programa. Por conta disso, agora será tratado exatamente este ponto: onde e como conseguir tais informações. Bem, o programa foi desenvolvido de tal forma para que os dados fundamentais para a execução do programa fossem coletados a partir de um documento de extensão <code>.txt</code>. O usuário deve inserir todas as informações que aqui já foram citadas em um arquivo que, naturalmente, deve ser nomeado como <code>DADOS.txt</code> (vale ressaltar que este nome pode ser facilmente alterado por outro, bastando apenas alterar a linha < 6 > no <code>main.py</code>. Dentro deste arquivo, é importante que os dados estejam dispostos de uma maneira específica, segue exemplo:</p><br/>
 
 <center>
-<img src="imgs/EX3.1.png" width=49%>
-<img src="imgs/EXj3.png" width = 50%>
+<img src="imgs/EX3.1.png" width=48%>
+<img src="imgs/EXj3.png" width = 48%>
 <i>Figuras VII e IX: exemplo de como deve ser configurado o arquivo "DADOS.txt";</i>
 </center><br/>
 <b>OBS: vide <i>"Figura V"</i> para ficar mais claro a quais cidades os números de identificação equivalem;</b><br/><br/>
