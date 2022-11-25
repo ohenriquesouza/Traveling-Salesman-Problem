@@ -158,6 +158,44 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 <i>Figura XI: função responsável por criar os vértices do grafo a partir dos dados lidos do arquivo de entrada;</i>
 </center><br/>
 
+<p align="justify">⠀⠀⠀⠀Com tudo individualmente pronto, usou-se o arquivo <code>graph.py</code>, que conta com uma série de funções que objetivam juntar harmônicamente todos os elementos do grafo, tornando possível o funcionamento do programa. Logo de começo, o construtor da classe "grafo" é acionado, desta forma, garantindo que todas as varáveis, tais como as listas de: arestas do grafo, número de vértices do grafo, os próprios vértices, arestas, vértices que já foram visitados e as demais, como por exemplo: o número de vértices, carga horária e o ganho total, são zeradas, evitando que haja armazenamento desnecessário com lixo de memória. Ademais, é neste instânte que o grafo direcionado é formado, utilizando a biblioteca <code>NetWorkX</code>.</p>
+
+<p align="justify">⠀⠀⠀⠀Para possibilitar a visualização do grafo por parte do usuário, criou-se a função <code>printGraph( )</code>. Nesta, as configurações referentes as coordenadas dos vértices são passadas para o vetor '<i>pos</i>'. Com as configurações posicionais já definidas, um loop <i>for</i> passa pela lista dos vértices e colore da seguinte maneira:<br/>
+<br/>
+<center>
+<b>
+⠀⠀⠀⠀⠀🔵: Vértices ainda não visitados são pintados de azul;<br/>
+🟢: Vértices já visitados são pintados de verde;<br/></b>
+</center><br/><br/>
+
+⠀⠀⠀⠀Lembrando que todo o funcionamento desta função apenas é possível devido as ferramentas da biblioteca citada anteriormente e seu recurso "<code>draw_network</code>" e "<code>show( )</code>" para mostrar o resultado na tela.
+</p>
+
+<p align="justify">⠀⠀⠀⠀Outra função de extrema importância para o funcionamento ideal do programa é a chamada <code>existNode( )</code>. Sua função é simples: ela recebe um 'id' (vértice), e realiza a verificação se este existe e, caso exista, verifica se tal vértice já foi ou não visitado anteriormente. Caso a função verifique que o vértice já foi visitado, retorna <i>true</i>, caso contrário, retorna <i>false</i>. Tal verificação é importânte pois o trajeto que será percorrido durante a execução do programa depende diretamente do conhecimento sobre quais dos vértces já foram ou não foram visitados. Vértices visitados durante a execução do programa são adicionados a uma lista específica, para que, quando necessário, seja possível ter fácil acesso aos mesmos (os vértices já visitados). Da mesma maneira, a função <code>verifyEdge( )</code> realiza o exato mesmo tipo de verificação, entretanto, ao invés de receber vértices e os validar, recebe as arestas do grafo.</p>
+
+<p align="justify">⠀⠀⠀⠀Para o caminhamento, utilizou-se um misto de dois tipos de programação: guloso e dinâmico. Devido a isso, a procura pelo melhor caminho possível dentro da estrutura do grafo é realizado de maneira a utilizar princípios de ambos os modelos de programação. A função <code>find_BestStep( )</code> é responsável pelo caminhamento de forma gulosa. Durante sua execução, um loop <i>for</i> caminha pelos vértices e, a partir de estruturas de controle <i>ifs</i>, realiza a verificação a respeito de descobrir se o ganho do vértice da outra "ponta" da aresta possui um valor maior referente ao lucro que já está registrado em <code>max_bounty</code>, ou seja, o maior até então. A outra verificação realizada dentro desta função é a respeito da carga horária, "dada a carga-horária" atual, é possível caminhar para determinado vértice ' X ' e retornar para o ponto inicial (Divinópolis)? A aresta necessária para realizar este caminhamento, já foi anteriormente utilizada?".<br/>⠀⠀⠀⠀Com o auxílio da função <code>can_ChooseEdge( )</code> (responsável por validar se é possível percorrer por alguma aresta ' X ' no grafo), se for validado tal caminho, o programa adiciona o vértice na lista de já visitados e atualiza o ganho total, bem como desconta no saldo de carga-horária restante.</p><br/>
+
+<center>
+<img src="imgs/canContinue.png" width=600px><br/>
+<i>Figura XII: funcionamento da função caso seja verificado que o próximo ponto de viagem é possível;</i>
+</center><br/>
+
+<p align="justify">⠀⠀⠀⠀Caso contrário, se for verificado que a próxima cidade (vértice) que será visitada irá desobedecer a regra imposta pelo programa, ou seja: não será possível retornar para Divinópolis após prestar serviço para os clientes da cidade ' X ', seja por indisponibilidade de arestas, ou por falta de tempo. O programa então trata de retornar o engenheiro até sua casa e atualiza o ganho total, bem como a carga-horária, finalizando assim a execução.</p>
+
+<center>
+<img src="imgs/cantcontinue.png" width=600px><br/>
+<i>Figura XIII: funcionamento da função caso seja verificado que o próximo ponto de viagem <b>NÃO</b> é possível, independente do motivo;</i>
+</center><br/>
+
+<p align="justify">⠀⠀⠀⠀A próxima função que ser discutida é a chamada <code>gulosoMaxValue( )</code>. Esta, recebe os dados referentes a carga-horária e executa o programa, verificando todas as possibilidades de caminho a partir de um intermédio entre programação dinâmica e o método guloso. "Dicionários" <b>[ IX ] </b> em <i>Python</i> são uma coleção que guarda valores multidimensionais para cada índice. Seu comportamento pode ser comparado as funcionalidades da função <code>pair< x, y ></code>, utilizadas no C++ em alto nível. Utilizando desta estrutura de dados, o resultado final do programa será armazenado em um dicionário de nome <code>results_dict</code>. Durante a execução do programa, enquanto for possível viajar, partindo de divinópolis, a função <code>find_BestStep( )</code> (já mencionada aqui neste documento), continuará sendo executada, sempre realizando a verificação sobre se a carga-horária ainda disponível, é suficiente para percorrer o próximo caminho até o vértice seguinte.</p>
+
+<p align="justify">⠀⠀⠀⠀Uma vez realizado o percurso, é necessário voltar para o ponto de origem. Para isso, as funções <code>timeToReturn( )</code> e <code>cotToReturn( )</code> são responsáveis por, respectivamente, receber um vértice e, a partir deste, retornar o tempo necessário para voltar até Divinópolis e o custo referente ao combustível necessário para voltar até a cidade origem. Por fim, a função <code>cleanVariables( )</code> limpa todas as variáveis utilizadas durante o looping "<i>dinâmico-guloso</i>".</p>
+
+# RESULTADOS OBTIDOS
+
+# COMPILAÇÃO E EXECUÇÃO
+
+<p align="justify">⠀⠀⠀⠀Para que seja possível a compilação do programa, é necessário que o usuário instale alguns </p>
 
 # REFERÊNCIAS
 [ I ] https://pt.wikipedia.org/wiki/Teoria_dos_grafos <br/>
@@ -168,4 +206,5 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 [ VI ] https://networkx.org/ <br/>
 [ VII ] https://www.carrosnaweb.com.br/fichadetalhe.asp?codigo=2274 
 hamilton https://www.inf.ufsc.br/grafos/temas/hamiltoniano/hamiltoniano.htm
+dicionario https://blog.somostera.com/desenvolvimento-web/dicionario-python#:~:text=Os%20dicion%C3%A1rios%20Python%20s%C3%A3o%20uma,em%20um%20programa%20de%20software.
 <br/>
