@@ -50,22 +50,25 @@
 
 <p align="justify"><b>OBS:</b> Um grafo direcionado ou não, que possui pesos nas arestas, uma função adicional <b>E ➝ R</b> realiza essa associação [aresta-valor]. Este modelo de grafos aparece em problemas de melhor rota tal como o <b>Problema do Caixeiro Viajante [ II ]</b>, próximo tópico que será abordado neste estudo.</p>
 
-<p align="justify">⠀⠀⠀⠀Muito famoso e discutido dentro da área matemático-computacional, o Problema do Caixeiro Viajante é um problema que tenta determinar a menor rota para percorrer uma série de cidades e retornar a cidade de origem. Ele se mostra muito importante e essêncial, o qual deve fazer parte da bagagem de todo profissional competente na área. Em literatua, enuncia-o da seguinte forma:</p>
+<p align="justify">⠀⠀⠀⠀Muito famoso e discutido dentro da área matemático-computacional, o Problema do Caixeiro Viajante é um problema que tenta determinar a menor rota para percorrer uma série de cidades e retornar a cidade de origem. Ele se mostra muito importante e essêncial, o qual deve fazer parte da bagagem de todo profissional competente na área. Em literatura, enuncia-o da seguinte forma:</p>
 
 <p align="jusitfy">"<i>Suponha que um caixeiro viajante tenha de visitar '<b>n</b>' cidades diferentes, iniciando e encerrando sua viagem na primeira cidade. Suponha, também, que não importa a ordem com que as cidades são visitadas e que de cada uma delas pode-se ir diretamente a qualquer outra.
 O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a viagem total.</i>"</p>
 
-<p align="justify">⠀⠀⠀⠀Para exemplificar o enunciado do problema, temporáriamente, atribui-se 4 ao número '<b>n</b>' de cidades pelas quais o caixeiro deve passar. Cada cidade é represetada por um número inteiro e positivo: '<b>1</b>' para a primeira cidade, '<b>2</b>' para a segunda cidade e assim por diante. Uma rota que o caixeiro poderia consiederar seria: <i>saia de 1 e vá para 2, dessa vá para 3 e caminhe para 4, por fim, retorne a 1,</i> dessa forma, fazendo o caminho 1-2-3-4-1. O problema do caixeiro é um clássico na área de problemas de otimização combinatória e é um problema da classes dos <b>NP-Difícil</b>. Ao se resolver um problema deste tipo, deve-se antes tentar reduzilo a um problema de enumeração: encontrar todas as possíveis rotas e calcular o comprimento de cada uma delas, dessa forma, vendo qual a menor.</p><br/>
+<p align="justify">⠀⠀⠀⠀Para exemplificar o enunciado do problema, temporáriamente, atribui-se 4 ao número '<b>n</b>' de cidades pelas quais o caixeiro deve passar. Cada cidade é representada por um número inteiro e positivo: '<b>1</b>' para a primeira cidade, '<b>2</b>' para a segunda cidade e assim por diante. Uma rota que o caixeiro poderia consiederar seria: <i>saia de 1 e vá para 2, dessa vá para 3 e caminhe para 4, por fim, retorne a 1,</i> dessa forma, fazendo o caminho 1-2-3-4-1. O problema do caixeiro é um clássico na área de problemas de otimização combinatória e é um problema da classes dos <b>NP-Difícil</b>. Ao se resolver um problema deste tipo, deve-se antes tentar reduzí-lo a um problema de enumeração: encontrar todas as possíveis rotas e calcular o comprimento de cada uma delas, dessa forma, vendo qual a menor.</p><br/>
 
 <center>
 <img src="imgs/caixeirov.gif" width=400px><br/>
 <i>Figura III: representação de um grafo do Problema do Caixeiro Viajante;</i>
 </center><br/>
 
-<p align="justify">⠀⠀⠀⠀Antes de introduzir o problema no qual o trabalho será desenvolvido, é importante apresentar alguns outros conceitos essênciais para que o mesmo possa ser compreendido. Falando em caminhamento sob um grafo no qual cada vértice apenas pode ser visitado uma vez, fala-se de um conceito chamado <b>Caminho Hamiltoniano [ III ]</b>. Um caminho hamiltoniano é aquele que permite passar por todos os vértices de um grafo G, entretanto, sem repetir nenhum deles, ou seja, caminho hamiltoniano diz respeito aquele pelo qual, dado um caminho, todos os vértices serão visistados e nenhum será repetido. Neste estudo, o caminho a ser percorrido dentro do grafo pode facilmenter ser tratado como um ciclo, e por conta disso, o problema aqui tratado se encaixa perfeitamente como um ciclo hamiltoniano, como será explicado no próximo parágrafo.</p>
+<p align="justify">⠀⠀⠀⠀Antes de introduzir o problema no qual o trabalho será desenvolvido, é importante apresentar alguns outros conceitos essênciais para que o mesmo possa ser compreendido. Falando em caminhamento sob um grafo no qual cada vértice apenas pode ser visitado uma vez, fala-se de um conceito chamado <b>Circuito Hamiltoniano [ III ]</b>. Um caminho hamiltoniano é aquele que permite passar por todos os vértices de um grafo G, entretanto, sem repetir nenhum deles, ou seja, circuito hamiltoniano diz respeito aquele pelo qual, dado um caminho, todos os vértices serão visistados e nenhum será repetido. Neste estudo, o caminho a ser percorrido dentro do grafo pode facilmenter ser tratado como um ciclo, e por conta disso, o problema aqui tratado se encaixa perfeitamente como um ciclo hamiltoniano, como será entendido a diante no documento.</p>
+
+<p align="justify">⠀⠀⠀⠀Outro conceito relevante para levar a um entendimento satisfatório do trabalho aqui documento, é sobre os algoritmos gulosos e como seu comportamento influencia um programa a encontrar sua melhor solução (ou quase). Neste tipo de método, os algortimos, durante seu processo de tomadas de decições, sempre optam por aquela que parece ser a melhor opção local. Isso implica que, em todos os casos, as escolhas serão tomadas apenas se baseando na melhor opção no momento da análise, sem "pensar" se tal escolha, trará a melhor solução global ao fim de sua execução. Pensando em algoritmos gulosos, é necessário aceitar que a decição tomada é sempre a melhor, e que um conjunto dessas, o levará a melhor solução possível para o problema.<br/>⠀⠀⠀⠀Muitas das vezes, esse comportamento dito "guloso" o leva para a melhor solução do problema, apesar de não ser sempre, o abismo que existe em termos de facilidade durante a implementação de um algoritmo deste tipo, com algoritmos de programação dinâmica, os fazem serem escolhidos diversas vezes. Por fim, o último conceito que deve ser apresentado antes de dar início a explicação do trabalho é sobre o método de busca DFS, do inglês <i>Deep First Search</i>, ou "Busca em Profundidade" é um algoritmo usado para realizar uma busca ou travessia em alguma estrutura de dados, como: árvore, substrutura de árvores e/ou grafos. Essa forma de travessia projeta um caminho futuro e o percorre até que não seja mais possível ou chegue ao seu destino.</p>
+
 
 <p align="justify">⠀⠀⠀⠀Com a teoria dos grafos e o Problema do Caixeiro Viajante já pré-estabelecidos, pode-se começar a discução sobre como esses dois tópicos da computação foram utilizados para a solução do problema proposto. Para este estudo, um engenheiro elétrico residente de Divinópolis que atende clientes em 9 diferentes cidades, busca a melhor rota correlacionando o tempo de trabalho que um cliente residente da cidade ' x ' irá exigir, com o ganho que terá por trabalhar para ele. É importante ressaltar que, como dito, os clientes estão espalhados pelas 9 cidades em torno de Divinópolis, entretanto, em uma semana, devido a carga horária disponível para aquela, nem todas as cidades serão sempre visitadas pelo engenheiro. Visando evitar prejuízo, o caminho pelo qual será percorrido para prestar seu serviço deve ser minuciosamente calculado. Afinal, cada semana terá uma carga horária diferente a ser comprida, portanto, o maior valor em dinheiro deve ser convertido a partir desta limitação horária.</p>
-<p align="justify">⠀⠀⠀⠀Este mapa da região Centro-Oeste de Minas Gerais demarca todas as cidades onde os clientes moram/trabalham, bem como define Divinópolis como sendo a origem e destino final, ou seja, torna-se um ciclo hamiltoniano com algumas alterações, uma vez que, a partir da carga horária disponível, nem todas as cidades poderão ser visitadas, uma vez que, ao fim do dia, o engenheiro deve retornar a Divinópolis para que possa voltar até sua casa (sem que exceda a carga horária daquele dia de serviço).</p><br/>
+<p align="justify">⠀⠀⠀⠀Este mapa da região Centro-Oeste de Minas Gerais demarca todas as cidades onde os clientes moram/trabalham, bem como define Divinópolis como sendo a origem e destino final, ou seja, torna-se um ciclo hamiltoniano com algumas alterações, uma vez que, a partir da carga horária disponível, nem todas as cidades poderão ser visitadas, uma vez que, ao fim da semana, o engenheiro deve retornar a Divinópolis para que possa voltar até sua casa (sem que exceda a carga horária daquela semana de serviço).</p><br/>
 
 <center>
 <img src="imgs/zoomwithmarks.png" width=550px><br/>
@@ -79,7 +82,7 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 <i>Figura V: grafo gerado a partir do mapa de Minas Gerais presente na Figura IV;</i>
 </center><br/>
 
-<p align="justify">⠀⠀⠀⠀Ademais, vale reforçar a importância de levar em consideração não apenas o tempo de deslocamento para sair de uma cidade ' x ' e chegar em ' y ', mas também o gasto de combustível ao final do dia. Se tratando de trabalho, o ganho oriundo do serviço prestado para os clientes, deve ser capaz de suprir os gastos do combustível, bem como gerar lucro. Visando maximizar a otimização do uso do tempo/combustível, algumas regras são criadas referentes as visitas em algumas certas cidades. Para que o engenheiro possa ir trabalhar em Bom Despacho, por exemplo, ele deve, obrigatóriamente, trabalhar antes ou em Nova Serrana, ou em Lagoa da Prata, uma vez que não é possível chegar a Bom Despacho sem antes passar por estas cidades. Essa situação acontece novamente quando o engenheiro precisa prestar serviço na cidade de Oliveira. Para chegar ao seu destino, ele deve antes passar e trabalhar em Cláudio primeiro, uma vez que estão no "mesmo" caminho.</p>
+<p align="justify">⠀⠀⠀⠀Ademais, vale reforçar a importância de levar em consideração não apenas o tempo de deslocamento para sair de uma cidade ' x ' e chegar em ' y ', mas também o gasto de combustível da viagem. Se tratando de trabalho, o ganho oriundo do serviço prestado para os clientes, deve ser capaz de suprir os gastos do combustível, bem como gerar lucro. Visando maximizar a otimização do uso do tempo/combustível, algumas regras são criadas referentes as visitas em algumas certas cidades. Para que o engenheiro possa ir trabalhar em Bom Despacho, por exemplo, ele deve, obrigatóriamente, trabalhar antes ou em Nova Serrana, ou em Lagoa da Prata, uma vez que não é possível chegar a Bom Despacho sem antes passar por estas cidades. Essa situação acontece novamente quando o engenheiro precisa prestar serviço na cidade de Oliveira. Para chegar ao seu destino, ele deve antes passar e trabalhar em Cláudio primeiro, uma vez que estão no "mesmo" caminho.</p>
 
 <p align="justify">⠀⠀⠀⠀Por conta disso, o consumo do carro utilizado para o transporte durante as viagens a trabalho é importante e tem papel fundamental na construção do grafo, juntamente com o tempo gasto durante o deslocamento. Para tal, foi construida a seguinte tabela contendo todas as informações necessárias para a construção e organização do grafo. O carro utilizado para realizar o transporte até as cidades é um <i>Ford Ka S. (sedan) 1.5</i> de ano 2015, o modelo apresenta consumo médio em vias rodoviárias de ± 13,6 Km/L segundo o site <b>carrosnaweb [ VII ]</b>.</p><br/>
 
@@ -101,9 +104,60 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 
 <p align="justify">⠀⠀⠀⠀Diante do exposto, o leitor agora está apto para ler sobre como tal processo foi implementado, passando passo a passo pelo código desenvolvido, afim de solucionar o problema proposto.</p>
 
-#LÓGICA
+# LÓGICA
 
-<p align="justify">⠀⠀⠀⠀</p>
+<p align="justify">⠀⠀⠀⠀Para que fosse possível inicializar o grafo e começar operar suas configurações iniciais, criou-se o arquivo <i>'node.py'</i>, no qual a classe <code>Node( )</code> é criada e se refere aos vértices que serão utilizados no grafos. Nesta, o construtor da classe do vértice se incia, recebendo os seguintes parâmetros: (<code>self, id, bounty, time_spent</code>). A respeito destes parâmetros, o 'self' funciona como o 'this ➝' do C++; o 'id' representa o número do vértice, no caso, as cidades que serão visitadas; 'bounty' diz respeito a quantia que o engenheiro irá receber ao visitar tal cidade e prestar seu serviço; e 'time_spent' o tempo que será gasto para atendimento do cliente.</p><br/>
+
+<center>
+<img src="imgs/EXj1.png" width=450px><br/>
+<i>Figura VI: representação de como foi criada a classe referente aos Nós (vértices) do grafo;</i>
+</center><br/>
+
+<p align="justify">⠀⠀⠀⠀Com os vértices inicializados, foi necessário criar agora a classe referente as arestas do grafo. Seguindo o mesmo padrão da classe <code>Node( )</code>, a classe <code>Edge( )</code> também recebe algumas configurações iniciais como parâmetros, são elas: (<code>self, gas_cost, distance, begin, end</code>). Em que cada um, equivale a repectivamente: o mesmo 'this ➝' do C++, o custo da gasolina (por cada litro consumido pelo veículo durante os percursos), a distância a qual o engenheiro terá que dirigir até que chegue em seu cliente e os vértices de partida e chegada, neste caso, a cidade em que ele deixou e a cidade na qual ele pretende chegar. Devido a estas informações carregadas pelas arestas, agora tem-se arestas as quais carregam: seus pesos, vértice inicial e vértice final, bem como uma variável booleana que tornará possível a movimentação pelo grafo.</p><br/>
+
+<center>
+<img src="imgs/EXj2.png" width=450px><br/>
+<i>Figura VII: representação de como foi criada a classe referente as Arestas do grafo, bem como foram feitas suas atribuições;</i>
+</center><br/>
+
+<p align="justify">⠀⠀⠀⠀Neste ponto, o grafo já conta com o vértices e arestas capacitados para receberem todas informações necessárias para o funcionamento do programa. Por conta disso, agora será tratado exatamente este ponto: onde e como conseguir tais informações. Bem, o programa foi desenvolvido de tal forma para que os dados fundamentais para a execução do programa fossem coletados a partir de um documento de extensão <code>.txt</code>. O usuário deve inserir todas as informações que aqui já foram citadas em um arquivo que, naturalmente, deve ser nomeado como <code>DADOS.txt</code> (vale ressaltar que este nome pode ser facilmente alterado por outro, bastando apenas alterar a linha < 6 > no <code>main.py</code>. Dentro deste arquivo, é importante que os dados estejam dispostos de uma maneira específica, segue exemplo:</p><br/>
+
+<center>
+<img src="imgs/EX3.1.png" width=49%>
+<img src="imgs/EXj3.png" width = 50%>
+<i>Figuras VII e IX: exemplo de como deve ser configurado o arquivo "DADOS.txt";</i>
+</center><br/>
+<b>OBS: vide <i>"Figura V"</i> para ficar mais claro a quais cidades os números de identificação equivalem;</b><br/><br/>
+
+<p align="justify">⠀⠀⠀⠀Ainda no arquivo de entrada no qual o usuário tem liberdade para alterar quaisquer configurações que deseja, é necessário a informação sobre os arcos entre os vértices também. Isto é: deve ser informado a distância (em horas, no caso deste trabalho que envolve viagens rodoviárias) entre um vértice e outro (cidades), bem como o gasto médio de combustível para realizar tal viagem. Para tal, foi construída a seguinte estrutura que abrange todos os caminhos possíveis, pelos quais o engenheiro pode passar em algumas de suas viagens:</p><br/>
+
+<center>
+<img src="imgs/arcos1.png" width=400px><br/>
+<i>Figura X: exemplo de como deve ser escrita as informações sobre os arcos presentes no grafo;</i>
+</center><br/>
+
+<p align="justify">⠀⠀⠀⠀Certificando que o arquivo de leitura foi configurado corretamente, pode-se começar a explicar como foi desenvolvido e aplicado o método de leitura do mesmo, assim possibilitando a execução do programa como esperado. Para ler, interpretar e absorver os dados presentes no arquivo de entrada, os subprogramas do arquivo <code>process_file.py</code> foram criados.</p>
+
+<p align="justify">⠀⠀⠀⠀A primeira delas, <code>processfile( )</code> tem um papel simples, porém muito importante para que as demais consigam operar com sucesso: separa todo o arquivo em linhas. Tal ação é realizada utilizando de um loop <i>for</i>, salvando cada linha em uma variável "<code>line</code>" ➝ muito parecido com o formato utilizado para realizar tokenizações em C++. Seguindo com a função <code>processLine( )</code> responsável por "separar" o arquivo, removendo do arquivo, os espaços presentes entre as strings. Dessa forma, já possível criar as arestas, afinal, já estão isolados, fazendo assim a chamada da função <mark>buildEdge( ) *</mark>, que recebe como parâmetro o "pedaço" cortado do arquivo e o grafo como um todo, criando assim, o primeiro e os demais.</p>
+
+<p align="justify">⠀⠀⠀⠀Entrando na função chamada <code>getNumberOfNodes( )</code>, como o nome já sugere, lê no arquivo a quantidade de vértices e a define no grafo. A próxima função essêncial para o funcionamento do programa é a chamada <code>getFloatValueFromTitle( )</code>. Pode parecer confuso lendo o nome dado, porém, o que essa função realiza é retornar como um valor flutuante (Float), dado uma string do arquivo, além de remover possíveis '\n', que podem aparecer ao fim das strings lidas. O funcioamento dessa função utiliza do bloco <i>Try Catch</i>, normalmente usado para tratamentos de exceções.</p>
+
+<p align="justify">⠀⠀⠀⠀A função <b><code>buildEdge( ) *</code></b>, citada anteriormente, é responsável por construir uma aresta de acordo com os dados coletados anteriormente pelo arquivo. Com os valores coletados, a função é capaz de ler a distância informada, bem como o consumo médio esperado para tal trajeto. Além disso, a função também adiciona o vértice inicial e o final para a aresta em questão, de forma que, no fim, se tem um vértice com os seguintes atributos:</p>
+
+>edge = Edge{
+    ⠀⠀⠀gas_cost,
+      ⠀    ⠀  distance,
+      ⠀⠀  ⠀begin,
+      ⠀⠀  ⠀end
+}
+
+<p align="justify">⠀⠀⠀⠀Assim como a função <code>buildEdge( )</code>, que tem como principal objetivo criar as arestas presentes no grafo, a função <code>buildNode( )</code> vem com o propósito praticamente igual. Nesta, o programa constrói um novo vértice, também de acordo com as informações coletadas do arquivo de entrada. Enquanto a outra função ficava responsável por coletar e adicionar a distância e o custo de combustível envolvido, esta agora objetiva alcançar a definição da recompensa sobre o trabalho realizado pelo engenheiro na cidade 'X', bem como definir o tempo no qual tal serviço levará para ser concluido. A função <code>verifyNode( )</code> faz a verificação se algum vértice já consta dentro da estrutura do grafo. Caso seja encontrado, a função retorna <i>true</i>, e o não adiciona, visto que não é possível ter vértices iguais, entretanto, caso o vértice seja novo, ou seja, não foi encontrado dentro do grafo, é adicionado ao grafo.</p><br/>
+
+<center>
+<img src="imgs/process1.png" width=600px><br/>
+<i>Figura XI: função responsável por criar os vértices do grafo a partir dos dados lidos do arquivo de entrada;</i>
+</center><br/>
+
 
 # REFERÊNCIAS
 [ I ] https://pt.wikipedia.org/wiki/Teoria_dos_grafos <br/>
