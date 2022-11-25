@@ -116,7 +116,7 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 <p align="justify">⠀⠀⠀⠀Com os vértices inicializados, foi necessário criar agora a classe referente as arestas do grafo. Seguindo o mesmo padrão da classe <code>Node( )</code>, a classe <code>Edge( )</code> também recebe algumas configurações iniciais como parâmetros, são elas: (<code>self, gas_cost, distance, begin, end</code>). Em que cada um, equivale a repectivamente: o mesmo 'this ➝' do C++, o custo da gasolina (por cada litro consumido pelo veículo durante os percursos), a distância a qual o engenheiro terá que dirigir até que chegue em seu cliente e os vértices de partida e chegada, neste caso, a cidade em que ele deixou e a cidade na qual ele pretende chegar. Devido a estas informações carregadas pelas arestas, agora tem-se arestas as quais carregam: seus pesos, vértice inicial e vértice final, bem como uma variável booleana que tornará possível a movimentação pelo grafo.</p><br/>
 
 <center>
-<img src="imgs/EXj2.png" width=450px><br/>
+<img src="imgs/Exj2.png" width=450px><br/>
 <i>Figura VII: representação de como foi criada a classe referente as Arestas do grafo, bem como foram feitas suas atribuições;</i>
 </center><br/>
 
@@ -164,7 +164,7 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 <br/>
 <center>
 <b>
-⠀⠀⠀⠀⠀🔵: Vértices ainda não visitados são pintados de azul;<br/>
+🔵: Vértices ainda não visitados são pintados de azul;<br/>
 🟢: Vértices já visitados são pintados de verde;<br/></b>
 </center><br/><br/>
 
@@ -176,7 +176,7 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 <p align="justify">⠀⠀⠀⠀Para o caminhamento, utilizou-se um misto de dois tipos de programação: guloso e dinâmico. Devido a isso, a procura pelo melhor caminho possível dentro da estrutura do grafo é realizado de maneira a utilizar princípios de ambos os modelos de programação. A função <code>find_BestStep( )</code> é responsável pelo caminhamento de forma gulosa. Durante sua execução, um loop <i>for</i> caminha pelos vértices e, a partir de estruturas de controle <i>ifs</i>, realiza a verificação a respeito de descobrir se o ganho do vértice da outra "ponta" da aresta possui um valor maior referente ao lucro que já está registrado em <code>max_bounty</code>, ou seja, o maior até então. A outra verificação realizada dentro desta função é a respeito da carga horária, "dada a carga-horária" atual, é possível caminhar para determinado vértice ' X ' e retornar para o ponto inicial (Divinópolis)? A aresta necessária para realizar este caminhamento, já foi anteriormente utilizada?".<br/>⠀⠀⠀⠀Com o auxílio da função <code>can_ChooseEdge( )</code> (responsável por validar se é possível percorrer por alguma aresta ' X ' no grafo), se for validado tal caminho, o programa adiciona o vértice na lista de já visitados e atualiza o ganho total, bem como desconta no saldo de carga-horária restante.</p><br/>
 
 <center>
-<img src="imgs/canContinue.png" width=600px><br/>
+<img src="imgs/cancontinue.png" width=600px><br/>
 <i>Figura XII: funcionamento da função caso seja verificado que o próximo ponto de viagem é possível;</i>
 </center><br/>
 
@@ -246,7 +246,7 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 <hr/>
 
 # AUTORES
-Desenvolvido por João Pedro Martins Espíndola;
+Desenvolvido por João Pedro Martins Espíndola;<br/>
 Documentado por Henrique Souza Fagundes;
 
 Alunos do 4° periodo do curso de `Engenharia da Computação` no [CEFET-MG](https://www.cefetmg.br)
