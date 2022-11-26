@@ -98,10 +98,8 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 
 <p align="justify">⠀⠀⠀⠀Para que fosse possível inicializar o grafo e começar operar suas configurações iniciais, criou-se o arquivo <i>'node.py'</i>, no qual a classe <code>Node( )</code> é criada e se refere aos vértices que serão utilizados no grafos. Nesta, o construtor da classe do vértice se incia, recebendo os seguintes parâmetros: (<code>self, id, bounty, time_spent</code>). A respeito destes parâmetros, o 'self' funciona como o 'this ➝' do C++; o 'id' representa o número do vértice, no caso, as cidades que serão visitadas; 'bounty' diz respeito a quantia que o engenheiro irá receber ao visitar tal cidade e prestar seu serviço; e 'time_spent' o tempo que será gasto para atendimento do cliente.</p><br/>
 
-<center>
-<img src="imgs/EXj1.png" width=450px><br/>
-<i>Figura VI: representação de como foi criada a classe referente aos Nós (vértices) do grafo;</i>
-</center><br/>
+<p align = center> <img src="imgs/EXj1.png" width=450px><br/></p>
+<p align = center> <i>Figura VI: representação de como foi criada a classe referente aos Nós (vértices) do grafo;</i></p>
 
 <p align="justify">⠀⠀⠀⠀Com os vértices inicializados, foi necessário criar agora a classe referente as arestas do grafo. Seguindo o mesmo padrão da classe <code>Node( )</code>, a classe <code>Edge( )</code> também recebe algumas configurações iniciais como parâmetros, são elas: (<code>self, gas_cost, distance, begin, end</code>). Em que cada um, equivale a repectivamente: o mesmo 'this ➝' do C++, o custo da gasolina (por cada litro consumido pelo veículo durante os percursos), a distância a qual o engenheiro terá que dirigir até que chegue em seu cliente e os vértices de partida e chegada, neste caso, a cidade em que ele deixou e a cidade na qual ele pretende chegar. Devido a estas informações carregadas pelas arestas, agora tem-se arestas as quais carregam: seus pesos, vértice inicial e vértice final, bem como uma variável booleana que tornará possível a movimentação pelo grafo.</p><br/>
 
@@ -110,8 +108,8 @@ O problema do caixeiro viajante consiste em descobrir a rota que torna mínima a
 
 <p align="justify">⠀⠀⠀⠀Neste ponto, o grafo já conta com o vértices e arestas capacitados para receberem todas informações necessárias para o funcionamento do programa. Por conta disso, agora será tratado exatamente este ponto: onde e como conseguir tais informações. Bem, o programa foi desenvolvido de tal forma para que os dados fundamentais para a execução do programa fossem coletados a partir de um documento de extensão <code>.txt</code>. O usuário deve inserir todas as informações que aqui já foram citadas em um arquivo que, naturalmente, deve ser nomeado como <code>DADOS.txt</code> (vale ressaltar que este nome pode ser facilmente alterado por outro, bastando apenas alterar a linha < 6 > no <code>main.py</code>. Dentro deste arquivo, é importante que os dados estejam dispostos de uma maneira específica, segue exemplo:</p><br/>
 
-<p align = center> <img src="imgs/EX3.1.png" width=48%></p>
-<p align = center> <img src="imgs/EXj3.png" width = 48%></p>
+<p><img src="imgs/EX3.1.png" width=48%>
+<img src="imgs/EXj3.png" width = 48%></p>
 <p align = center> <i>Figuras VII e IX: exemplo de como deve ser configurado o arquivo "DADOS.txt";</i></p>
 <b>OBS: vide <i>"Figura V"</i> para ficar mais claro a quais cidades os números de identificação equivalem;</b><br/><br/>
 
